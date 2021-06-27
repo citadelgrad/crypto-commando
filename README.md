@@ -34,3 +34,20 @@ My focus for this hackathon is to get the auto farming and scheduled swapping im
 - It's going to be important to find the best ways to secure the wallet private keys. Options: running the app in docker, encrypting the private key, storing the private key in the cloud, sharing the private key, running the app in the cloud, Open Zeppelin Defender.
 
 Public URL: https://showcase.ethglobal.co/hackmoney2021/personal-defi-automation
+
+## Documentation
+
+### Token List
+
+Format of the token list.
+
+```json
+{
+  "address": "0x0327112423F3A68efdF1fcF402F6c5CB9f7C33fd",
+  "chainId": 1,
+  "name": "PieDAOBTC++",
+  "symbol": "BTC",
+  "decimals": 18,
+  "logoURI": "https://tokens.1inch.exchange/0x0327112423f3a68efdf1fcf402f6c5cb9f7c33fd.png"
+}
+```

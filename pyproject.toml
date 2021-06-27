@@ -7,7 +7,9 @@ authors = ["Scott Nixon <citadelgrad@gmail.com>"]
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
 flashbots = "^0.4.3"
-cement = "^3.0.4"
+pyfiglet = "^0.8.post1"
+prompt-toolkit = "^3.0.19"
+requests = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
