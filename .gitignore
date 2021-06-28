@@ -127,6 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-app/.envrc
 
+# defi automation specific.
 _archive
+app/.envrc
+.envrc
