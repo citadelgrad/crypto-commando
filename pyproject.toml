@@ -1,5 +1,12 @@
+[options]
+include_package_data = true
+
+[tool.poetry.scripts]
+cmdo = "crypto_commando.main:main"
+defi = "crypto_commando.main:main"
+
 [tool.poetry]
-name = "defi-automation"
+name = "crypto_commando"
 version = "0.1.0"
 description = "Automate farming, swapping, and staking of DeFi assets. Self Custodial."
 authors = ["Scott Nixon <citadelgrad@gmail.com>"]
@@ -21,5 +28,16 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-addopts = "-ra -q"
+minversion = 6.0
+# addopts = "-ra -s --cov-report term-missing --cov=crypto_commando tests/"
+addopts = "-ra -s"
 testpaths = ["tests"]
+
+[tool.isort]
+profile = "black"
+include_trailing_comma = true
+line_length = 88
+multi_line_output = 3
+
+[tool.black]
+line_length = 88

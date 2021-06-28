@@ -1,6 +1,8 @@
-# defi-automation
+# Crypto Commando
 
-Automate farming and staking of DeFi assets. Self Custodial.
+The crypto command make defi automation easy.
+
+Automate farming, swapping, and staking of DeFi assets. Self Custodial.
 
 ## Update #1
 
