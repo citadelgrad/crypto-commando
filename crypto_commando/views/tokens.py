@@ -13,14 +13,20 @@ def exchange_completer():
 
 @lru_cache
 def get_tokens(site):
+    """Get a list of ticker symbols from an exchange's tokenlist.
+
+    Args:
+        site (str): A short name of a defi crypto exchange.
+
+    Returns:
+        [list]: list of token symbols.
+    """
     try:
         response_content = requests.get(EXCHANGES[site]).content
         token_list = json.loads(response_content).get("tokens")
     except Exception as error:
         print(error)
         return
-
-    # (t.get("symbol"), t.get("name"))
 
     list_for_autocomplete = []
     for t in token_list:
