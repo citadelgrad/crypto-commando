@@ -1,43 +1,59 @@
 # Crypto Commando
 
-The crypto command make defi automation easy.
+**Start Infomercial**
+
+Are you a DeFi degen earning crazy yields? Does it take you hours each week to Harvest, Swap, and Re-Stake those earnings? Are you tired of stay up late to save on gas? Is your bae mad at you, because you are constantly checking prices to maximize your swaps? Hella slow transaction confirmations got you down?
+
+Crypto Commando cli make it easy to schedule your Harvests, Swaps, and Staking.
+
+- CMDO schedules when gas is cheap
+- CMDO checks prices for you and makes that sweet swap when the time is right.
+- CMDO restakes your bags to maximize your yields!
+
+Get your life back with Crypto Commandoooooo....
+
+Limited time offer only ~~$29.99~~, if you buy today it's freeeeee.
+
+**End Infomercial**
+
+---
+
+## Boring details
 
 Automate farming, swapping, and staking of DeFi assets. Self Custodial.
 
-## Update #1
+## Tech stuff
 
-Here's what our team is working on so far:
+Transactions Data Model
 
-**Name**: Personal Defi Automation
+```json
+NOW_TRANSACTION = {
+    "exchange": "kyber",
+    "account": "Scott",
+    "transaction_type": "RunNow",
+    "swap_from": "BAT",
+    "swap_from_amount": "100",
+    "price_min": ".75",
+    "price_max": "1.2",
+    "swap_to": "USDC",
+    "gas_option": "fast",
+    "price_slippage": ".01",
+}
+```
 
-**Description**: Automate farming, swapping, and staking of DeFi assets. Self Custodial.
-
-**Github**: https://github.com/citadelgrad/defi-automation
-
-**Development progress**
-
-Most of my development so far has been focused on prototyping in web3/solidity since I'm completely new to the language.
-
-**Idea**: It takes a lot of work to regularly check on farming and staking stake rewards across a dozen different applications. I'm often farming late in the evening because I'm trying to do this transactions when gas is cheaper. But I'd also love to automate certain tasks.
-
-A menu-driven command line tool to allow the user to automate farming, swapping, and staking of assets. The application runs locally on their secured personal computer or server. The user will be able to schedule checking their farms/stakes regular, set limits on gas, and only farm tokens if they meet minimums. Schedule swaps based on price, gas, etc. Schedule staking of tokens.
-
-My focus for this hackathon is to get the auto farming and scheduled swapping implemented. I hope to make this available on both ETH and Polygon.
-
-- Probably use Token lists https://tokenlists.org/
-- Possibly initial targets are to farm from Curve, Sushi, Convex
-- Swap on 1inch, uniswap, paraswap
-- I'd like to also try go package these swaps and submit them on the Flashbots network
-
-**Blockers**:
-
-- Time: I'd love help.
-- I'm doing the project solo. I'm not opposed to getting help but I just don't want to spend a bunch of time looking for and vetting a teammate. Everything's going to be written in Python using web3py. I'm considering using the Cement CLI app framework. https://cement.readthedocs.io/en/stable-2.0.x/
-- It's going to be important to find the best ways to secure the wallet private keys. Options: running the app in docker, encrypting the private key, storing the private key in the cloud, sharing the private key, running the app in the cloud, Open Zeppelin Defender.
-
-Public URL: https://showcase.ethglobal.co/hackmoney2021/personal-defi-automation
-
-## Documentation
+```json
+SCHEDULED_TRANSACTION = {
+    "exchange": "kyber",
+    "account": "Scott",
+    "transaction_type": "RunNow",
+    "swap_from": "BAT",
+    "swap_from_amount": "100",
+    "price_min": ".75",
+    "price_max": "1.2",
+    "swap_to": "USDC",
+    "gas_option": "fast",
+}
+```
 
 ### Token List
 
