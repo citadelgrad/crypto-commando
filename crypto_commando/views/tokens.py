@@ -7,8 +7,12 @@ from prompt_toolkit.completion import WordCompleter
 from crypto_commando.config import EXCHANGES, TRANSACTION_TYPE
 
 
+def exchange_tuple():
+    return [(name, name) for name, uri in EXCHANGES.items()]
+
+
 def exchange_completer():
-    return [exchange for exchange in EXCHANGES]
+    return list(EXCHANGES)
 
 
 @lru_cache
@@ -33,17 +37,3 @@ def get_tokens(site):
         list_for_autocomplete.append(t.get("symbol"))
 
     return list_for_autocomplete
-
-
-def token_completer(name):
-    WordCompleter(
-        get_tokens(name),
-        ignore_case=True,
-    )
-
-
-def transaction_type_completer():
-    WordCompleter(
-        TRANSACTION_TYPE,
-        ignore_case=True,
-    )

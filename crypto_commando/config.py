@@ -17,7 +17,8 @@ assert w3.isConnected()
 HOME = os.environ["HOME"]
 APP_HOME = f"{HOME}/.defi"
 
-TRANSACTION_TYPE = ["Harvest", "Scheduled", "RunNow"]
+TRANSACTION_TYPE = ["Scheduled", "RunNow"]
+
 
 # RPC urls are specific to this application.
 NETWORKS = [
@@ -45,11 +46,14 @@ NETWORKS_SIMPLE = [
 ]
 
 EXCHANGES = {
-    "aave": "tokenlist.aave.eth",
+    "aave": "http://tokenlist.aave.eth.link",
     "compound": "https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json",
     "gemini": "https://www.gemini.com/uniswap/manifest.json",
     "1inch": "http://tokens.1inch.eth.link",
     "kyber": "https://api.kyber.network/tokenlist",
     "uniswap": "https://gateway.ipfs.io/ipns/tokens.uniswap.org",
+    "uniswap-30k-pairs": "https://raw.githubusercontent.com/jab416171/uniswap-pairtokens/master/uniswap_pair_tokens.json",
     "zapper": "https://zapper.fi/api/token-list",
 }
+
+STAKING = {"yearn": "https://yearn.science/static/tokenlist.json"}

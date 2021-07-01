@@ -63,3 +63,15 @@ def wallet_completer():
     """
     wallet = load_wallet()
     return [f"{account.get('name')}" for account in wallet.get("accounts")]
+
+
+def wallet_tuple():
+    """Get account names from the local file accounts.json.
+
+    Returns:
+        list: account names
+    """
+    wallet = load_wallet()
+    return [
+        (account.get("name"), account.get("name")) for account in wallet.get("accounts")
+    ]
