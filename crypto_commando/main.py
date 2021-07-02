@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-from os import error
-from prompt_toolkit.shortcuts.prompt import confirm
 from prompt_toolkit.shortcuts import yes_no_dialog, input_dialog
-from pyfiglet import Figlet
+
+# from pyfiglet import Figlet
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.validation import Validator
@@ -19,6 +18,8 @@ from crypto_commando.views.transactions import (
 from crypto_commando.views.tokens import (
     get_tokens,
     exchange_tuple,
+    harvest_sites,
+    contract_tuple,
 )
 from crypto_commando.config import *
 
@@ -43,11 +44,37 @@ number_validator = Validator.from_callable(
 
 
 def harvest():
-    # TODO: Select account
-    #     scheduled_menu = TerminalMenu(
-    #         ["Convex >= 50cvx", "Curve 3Pool >= 40 tokens"],
-    #         menu_highlight_style=main_menu_style,
-    #     )
+    harvest = dict()
+    harvest["site"] = radiolist_dialog(
+        title="Defi Harvest",
+        text="",
+        values=harvest_sites(),
+    ).run()
+    harvest["contract"] = radiolist_dialog(
+        title="Contract",
+        text="Select your account: ",
+        values=contract_tuple(),
+    ).run()
+    harvest["minimum_amount"] = prompt(
+        f"Minimum before harvesting: ",
+        validator=number_validator,
+        completer=None,
+    )
+    harvest["gas_option"] = radiolist_dialog(
+        title="Gas",
+        text="",
+        values=[
+            ("trader", "trader"),
+            ("fast", "fast"),
+            ("standard", "standard"),
+            ("custom", "custom"),
+        ],
+    ).run()
+    if harvest["gas_option"] == "custom":
+        harvest["gas_option"] = input_dialog(
+            title="Custom Gas", text="Maximum gwei:"
+        ).run()
+        # harvest["gas_option"] = prompt(f"Custom gas: ", validator=number_validator)
     """
 
     ## FARMING
@@ -91,6 +118,11 @@ def swap():
         new_swap["price_max"] = prompt(
             f'Price maximum {new_swap["swap_from"]}: ', validator=number_validator
         )
+    else:
+        new_swap["price_slippage"] = prompt(
+            f"Price slippage, for example: .01 = 1%", validator=number_validator
+        )
+
     new_swap["swap_from"] = prompt(
         "You Pay: ",
         completer=WordCompleter(

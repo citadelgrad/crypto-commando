@@ -132,3 +132,5 @@ dmypy.json
 _archive
 crypto_commando/.envrc
 .envrc
+node_modules/
+cache/

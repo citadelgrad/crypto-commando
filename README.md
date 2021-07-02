@@ -22,6 +22,8 @@ Limited time offer only ~~$29.99~~, if you buy today it's freeeeee.
 
 Automate farming, swapping, and staking of DeFi assets. Self Custodial.
 
+**CMO is pre-production software does not work.**
+
 ## Tech stuff
 
 Transactions Data Model

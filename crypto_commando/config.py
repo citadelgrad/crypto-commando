@@ -6,8 +6,9 @@ from web3.auto.infura import w3
 from flashbots import flashbot
 from eth_account.account import Account
 
-WEB3_INFURA_PROJECT_ID = os.environ.get("WEB3_INFURA_PROJECT_ID")
-WEB3_INFURA_API_SECRET = os.environ.get("WEB3_INFURA_API_SECRET")
+
+ETH_HTTP_API = os.environ.get("ALCHEMY_MAINNET_HTTPS")
+POLYGON_HTTP_API = os.environ.get("POLYGON_MAINNET")
 
 # If you don't have a valid ETH mainnet connection this assert will fail.
 assert w3.isConnected()
@@ -28,7 +29,7 @@ NETWORKS = [
         chain_id=1,
         network_type="MAINNET",
         block_explorer="https://etherscan.io",
-        rpc_url=f"https://mainnet.infura.io/v3/{WEB3_INFURA_PROJECT_ID}",
+        rpc_url=ETH_HTTP_API,
     ),
     dict(
         name="Polygon",
@@ -36,7 +37,7 @@ NETWORKS = [
         chain_id=137,
         network_type="MAINNET",
         block_explorer="https://polygonscan.com/",
-        rpc_url=f"https://polygon-mainnet.infura.io/v3/{WEB3_INFURA_PROJECT_ID}",
+        rpc_url=POLYGON_HTTP_API,
     ),
 ]
 

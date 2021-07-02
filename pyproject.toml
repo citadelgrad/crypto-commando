@@ -4,6 +4,7 @@ include_package_data = true
 [tool.poetry.scripts]
 cmdo = "crypto_commando.main:main"
 defi = "crypto_commando.main:main"
+schedule = "crypto_commando.daemon.service:main"
 
 [tool.poetry]
 name = "crypto_commando"

@@ -37,3 +37,11 @@ def get_tokens(site):
         list_for_autocomplete.append(t.get("symbol"))
 
     return list_for_autocomplete
+
+
+def harvest_sites():
+    return ["Curve", "Badger", "Convex", "Sushi"]
+
+
+def contract_tuple():
+    return ["Curve", "Badger", "Convex", "Sushi"]
