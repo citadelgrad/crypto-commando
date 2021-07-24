@@ -16,7 +16,34 @@ Limited time offer only ~~$29.99~~, if you buy today it's freeeeee.
 
 **End Infomercial**
 
+After you've installed Crypto Commando, open a terminal and run `cmdo` to start the application.
+
+Application Requirements:
+
+- Python 3.9
+
+Supported Platforms:
+
+- Mac OS
+- Linux
+- Window's with WSL or Git-Bash
+
 ---
+
+## Developer Setup
+
+Start local fork of Ethereum
+
+```
+npx hardhat node
+```
+
+Preferably, use the Hardhat shorthand.
+
+```bash
+npm i -g hardhat-shorthand
+hh console
+```
 
 ## Boring details
 
