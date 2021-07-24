@@ -1,8 +1,14 @@
-networks: {
+require("@nomiclabs/hardhat-waffle");
+
+module.exports = {
+  solidity: "0.7.6",
+  networks: {
     hardhat: {
       forking: {
-        url: "https://eth-mainnet.alchemyapi.io/v2/3UKATXwirL1I6IUaJC3kirOCFqkuQJaj"
+        url: process.env.ALCHEMY_MAINNET_HTTPS,
         blockNumber: 12720945
       }
     }
   }
+};
+
