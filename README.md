@@ -16,6 +16,8 @@ Limited time offer only ~~$29.99~~, if you buy today it's freeeeee.
 
 **End Infomercial**
 
+---
+
 After you've installed Crypto Commando, open a terminal and run `cmdo` to start the application.
 
 Application Requirements:
