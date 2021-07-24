@@ -2,16 +2,15 @@ import os
 
 from eth_account.signers.local import LocalAccount
 from web3 import Web3, HTTPProvider
-from web3.auto.infura import w3
 from flashbots import flashbot
 from eth_account.account import Account
 
 
 ETH_HTTP_API = os.environ.get("ALCHEMY_MAINNET_HTTPS")
-POLYGON_HTTP_API = os.environ.get("POLYGON_MAINNET")
+ETH_WSS_API = os.environ.get("ALCHEMY_MAINNET_WSS")
 
-# If you don't have a valid ETH mainnet connection this assert will fail.
-assert w3.isConnected()
+POLYGON_HTTP_API = os.environ.get("ALCHEMY_POLYGON_MAINNET_HTTPS")
+POLYGON_WSS_API = os.environ.get("ALCHEMY_POLYGON_MAINNET_WSS")
 
 # pyfiglet font options: https://github.com/pwaller/pyfiglet/tree/master/pyfiglet/fonts
 
@@ -29,7 +28,8 @@ NETWORKS = [
         chain_id=1,
         network_type="MAINNET",
         block_explorer="https://etherscan.io",
-        rpc_url=ETH_HTTP_API,
+        https_url=ETH_HTTP_API,
+        wss_url=ETH_WSS_API,
     ),
     dict(
         name="Polygon",
@@ -37,7 +37,8 @@ NETWORKS = [
         chain_id=137,
         network_type="MAINNET",
         block_explorer="https://polygonscan.com/",
-        rpc_url=POLYGON_HTTP_API,
+        https_url=POLYGON_HTTP_API,
+        wss_url=POLYGON_WSS_API,
     ),
 ]
 
