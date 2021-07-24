@@ -5,6 +5,7 @@ from web3 import Web3, HTTPProvider
 from flashbots import flashbot
 from eth_account.account import Account
 
+ETHERSCAN_API_KEY = os.environ.get("ETHERSCAN_API_KEY")
 
 ETH_HTTP_API = os.environ.get("ALCHEMY_MAINNET_HTTPS")
 ETH_WSS_API = os.environ.get("ALCHEMY_MAINNET_WSS")
@@ -40,7 +41,17 @@ NETWORKS = [
         https_url=POLYGON_HTTP_API,
         wss_url=POLYGON_WSS_API,
     ),
+    dict(
+        name="TestLocal",
+        symbol="ETH",
+        chain_id=31337,
+        network_type="TESTNET",
+        block_explorer="https://etherscan.io",
+        https_url="http://127.0.0.1:8545",
+        wss_url="ws://127.0.0.1:8545",
+    ),
 ]
+
 
 """ Used for Autocomplete """
 NETWORKS_SIMPLE = [
