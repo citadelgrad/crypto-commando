@@ -37,13 +37,14 @@ def aave_rewards():
 
 def cvxCRV_rewardsconvex():
     """
-    Contract Address: https://docs.convexfinance.com/convexfinance/faq/contract-addresses
+    CRV rewards come from the Reward Factory.
 
-    How to get the 3Crv balance: https://docs.convexfinance.com/convexfinanceintegration/cvx-and-cvxcrv-staking
+    How to get the 3Crv balance.
+    https://docs.convexfinance.com/convexfinanceintegration/cvx-and-cvxcrv-staking
 
-    # GET CVX rewards amount
-    You can use the current mint-ratio found here https://docs.convexfinance.com/convexfinanceintegration/cvx-minting
-    CVX Minting. Based on CRV earnings its just minted at a specific ratio
+    GET CVX rewards amount
+    Use the current mint-ratio which is based on CRV earnings its just minted at a specific ratio.
+    https://docs.convexfinance.com/convexfinanceintegration/cvx-minting
     """
     convex_claim = get_contract(w3, claim_cvxCRV, json.loads(claim_cvxCRV_abi))
 
