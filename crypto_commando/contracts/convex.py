@@ -1,9 +1,15 @@
+"""
+Convex Contract Addresses
+https://docs.convexfinance.com/convexfinance/faq/contract-addresses
+"""
+from crypto_commando.helpers import get_contract
 import json
 
-from eth_account.signers.local import LocalAccount
-from web3 import Web3, HTTPProvider
-from eth_account.account import Account
+from web3 import Web3
 
+
+cvx_token = Web3.toChecksumAddress("0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B")
+convex_booster = Web3.toChecksumAddress("0xF403C135812408BFbE8713b5A23a04b3D48AAE31")
 # class HarvestBase():
 
 #     def __init__(self, contract, contract_abi) -> None:
@@ -16,6 +22,43 @@ from eth_account.account import Account
 
 # class ConvexHarvest(HarvestBase):
 #     # things
+
+
+def cvxCRV_3crv_reward(w3, public_key):
+    booster = get_contract(w3, convex_booster)
+    lockFees_contract = booster.functions.lockFees().call()
+    lock_instance = get_contract(w3, lockFees_contract)
+    return lock_instance.functions.earned(public_key).call()
+
+
+def cvx_reward_based_on_crv(w3, crvEarned):
+    cliffSize = 100000 * 1e18  # new cliff every 100,000 tokens
+    cliffCount = 1000  # 1,000 cliffs
+    maxSupply = 100000000 * 1e18  # 100 mil max supply
+
+    # first get total supply
+    cvx = get_contract(w3, cvx_token)
+    cvxTotalSupply = cvx.functions.totalSupply().call()
+
+    # get current cliff
+    currentCliff = cvxTotalSupply / cliffSize
+
+    # if current cliff is under the max
+    if currentCliff < cliffCount:
+        # get remaining cliffs
+        remaining = cliffCount - currentCliff
+
+        # multiply ratio of remaining cliffs to total cliffs against amount CRV received
+        cvxEarned = crvEarned * remaining / cliffCount
+
+        # double check we have not gone over the max supply
+        amountTillMax = maxSupply - cvxTotalSupply
+        if cvxEarned > amountTillMax:
+            cvxEarned = amountTillMax
+
+        return cvxEarned
+    return 0
+
 
 reward_factory = Web3.toChecksumAddress("0xEDCCB35798FAE4925718A43CC608AE136208AA8D")
 reward_factory_abi = """[{"inputs":[{"internalType":"address","name":"_operator","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"address","name":"_depositToken","type":"address"}],"name":"CreateCrvRewards","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_token","type":"address"},{"internalType":"address","name":"_mainRewards","type":"address"},{"internalType":"address","name":"_operator","type":"address"}],"name":"CreateTokenRewards","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_reward","type":"address"}],"name":"activeRewardCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_reward","type":"address"},{"internalType":"uint256","name":"_pid","type":"uint256"}],"name":"addActiveReward","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"crv","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"operator","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_reward","type":"address"},{"internalType":"uint256","name":"_pid","type":"uint256"}],"name":"removeActiveReward","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewardActiveList","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_stash","type":"address"},{"internalType":"bool","name":"_status","type":"bool"}],"name":"setAccess","outputs":[],"stateMutability":"nonpayable","type":"function"}]"""

@@ -5,7 +5,7 @@ we'll look on each network for a specific contract.
 from web3 import Web3
 
 from crypto_commando.config import NETWORKS
-from crypto_commando.helpers import get_contract_abi
+from crypto_commando.helpers import get_contract
 
 
 def test_dev_eth_network_setup():
@@ -16,8 +16,7 @@ def test_dev_eth_network_setup():
     assert w3_eth.isConnected()
 
     # Test if we can find the WBTC contract.
-    abi = get_contract_abi(WBTC_CONTRACT)
-    contract = w3_eth.eth.contract(address=WBTC_CONTRACT, abi=abi)
+    contract = get_contract(w3_eth, WBTC_CONTRACT)
     assert contract.functions.symbol().call() == "WBTC"
 
     # WebsocketProvider:

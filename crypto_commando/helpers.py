@@ -26,3 +26,19 @@ def get_contract_abi(contract):
         return data.get("result")
     else:
         raise "Unable to get contract ABI"
+
+
+def get_contract(w3, contract_address, abi=None):
+    """Simple interface for getting a contract instance.
+
+    Args:
+        w3 (class): Web3 api connection instance.
+        contract_address (str): address of the contract.
+        abi (str, optional): If not provided, get it form the api. Defaults to None.
+
+    Returns:
+        class: class instance of a contract.
+    """
+    if not abi:
+        abi = get_contract_abi(contract_address)
+    return w3.eth.contract(address=contract_address, abi=abi)
