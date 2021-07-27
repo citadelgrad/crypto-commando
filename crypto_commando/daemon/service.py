@@ -11,19 +11,17 @@ from crypto_commando.contracts.aave import *
 from crypto_commando.contracts.curve import *
 from crypto_commando.config import NETWORKS
 from crypto_commando.helpers import get_contract
-from crypto_commando.views.wallet import load_wallet
+from crypto_commando.views.wallet import load_wallet, Wallet
 
 ETH_MAINNET = NETWORKS[0]
 # HTTPProvider:
 w3 = Web3(HTTPProvider(ETH_MAINNET.get("https_url")))
 
-# THIS IS TEMP ACCOUNT.
-# ETH_ACCOUNT_SIGNATURE: LocalAccount = Account.from_key(
-#     "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
-# )
+
 # manually initialize the wallet.
-wallet = load_wallet()
-public_key = Web3.toChecksumAddress(wallet.get("accounts")[1].get("address"))
+wallet = Wallet()
+
+public_key = Web3.toChecksumAddress(wallet.accounts[0].eth_acc.address)
 
 WETH = Web3.toChecksumAddress("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
 BAT = Web3.toChecksumAddress("0x0d8775f648430679a709e98d2b0cb6250d2887ef")

@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from eth_account import Account
+from eth_account.messages import encode_defunct
 from prompt_toolkit.shortcuts.prompt import prompt
 from prompt_toolkit.completion import WordCompleter
 
@@ -79,9 +80,14 @@ def wallet_tuple():
 
 
 class CMDOAccount(Account):
-    def __init__(self, account) -> None:
+    def __init__(self, entry):
         super().__init__()
-        self.from_key(account.get("private_key"))
+        self.eth_acc = self.from_key(entry.get("private_key"))
+        self.name = entry.get("name")
+        self.network = entry.get("network")
+
+    def make_hash(self, message):
+        return encode_defunct(text=message)
 
 
 class Wallet:
