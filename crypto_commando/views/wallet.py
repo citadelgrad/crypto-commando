@@ -2,6 +2,7 @@ import os
 import json
 from pathlib import Path
 
+from eth_account import Account
 from prompt_toolkit.shortcuts.prompt import prompt
 from prompt_toolkit.completion import WordCompleter
 
@@ -75,3 +76,23 @@ def wallet_tuple():
     return [
         (account.get("name"), account.get("name")) for account in wallet.get("accounts")
     ]
+
+
+class CMDOAccount(Account):
+    def __init__(self, account) -> None:
+        super().__init__()
+        self.from_key(account.get("private_key"))
+
+
+class Wallet:
+    def __init__(self, accounts_file=f"{APP_HOME}/accounts.json") -> None:
+        self.__accounts_file = accounts_file
+        self.accounts = self._load_wallet()
+
+    def _load_wallet(self):
+        accounts = list()
+        with open(self.__accounts_file) as f:
+            local_accounts = json.loads(f.read())
+            for account in local_accounts.get("accounts"):
+                accounts.append(CMDOAccount(account))
+        return accounts
