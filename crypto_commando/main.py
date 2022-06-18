@@ -23,7 +23,7 @@ def is_float(text):
     try:
         float(text)
         return True
-    except ValueError as error:
+    except ValueError:
         return False
 
 
@@ -181,7 +181,7 @@ def main():
     """
     When transaction run, they are validated at that moment.
 
-    If you don't have enough GAS(eth, matic), tokens, or connectivity issues the tranaction will not run.
+    If you don't have enough GAS(eth, matic), tokens, or connectivity issues the transaction will not run.
     """
     # f = Figlet(font="slant")
     # print(f.renderText("Crypto"))
