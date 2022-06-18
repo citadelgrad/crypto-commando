@@ -1,28 +1,19 @@
 #!/usr/bin/env python3
-from prompt_toolkit.shortcuts import yes_no_dialog, input_dialog
-
 # from pyfiglet import Figlet
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.shortcuts import input_dialog, radiolist_dialog, yes_no_dialog
 from prompt_toolkit.validation import Validator
-from prompt_toolkit.shortcuts import radiolist_dialog
 
-from crypto_commando.views.wallet import (
-    load_wallet,
-    create_account,
-    wallet_tuple,
-)
-from crypto_commando.views.transactions import (
-    Transaction,
-)
-from crypto_commando.views.tokens import (
-    get_tokens,
-    exchange_tuple,
-    harvest_sites,
-    contract_tuple,
-)
 from crypto_commando.config import *
-
+from crypto_commando.views.tokens import (
+    contract_tuple,
+    exchange_tuple,
+    get_tokens,
+    harvest_sites,
+)
+from crypto_commando.views.transactions import Transaction
+from crypto_commando.views.wallet import create_account, load_wallet, wallet_tuple
 
 TITLE = "DeFi Automation"
 main_menu_style = ("bg_green", "fg_black")
