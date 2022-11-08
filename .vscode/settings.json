@@ -1,45 +1,31 @@
 {
-  "editor.insertSpaces": true,
-  "editor.tabSize": 4,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
-  "editor.autoClosingBrackets": "languageDefined",
-  "editor.wordWrap": "on",
-  "files.trimTrailingWhitespace": true,
-  "python.languageServer": "Pylance",
-  "python.formatting.provider": "black",
-  "python.linting.enabled": true,
-  "python.linting.lintOnSave": true,
-  "python.linting.banditEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.testing.pytestEnabled": true,
-  "python.envFile": "${workspaceFolder}/.envrc",
-  "python.sortImports.args": [
-    "--atomic"
-  ],
-  "python.analysis.extraPaths": [
-    "crypto_commando"
-  ],
-  "python.terminal.activateEnvironment": true,
-  "python.poetryPath": "poetry",
-  "python.terminal.activateEnvInCurrentTerminal": true,
-  "cSpell.ignoreWords": [
-    "pdbpp",
-    "pycodestyle",
-    "pylint",
-    "pytest",
-    "CMDO"
-  ],
-  "beautify.language": {
-    "js": {
-      "type": [
-        "json"
-      ]
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
     },
-    "css": [
-      "css"
-    ],
-  }
+    "editor.autoClosingBrackets": "languageDefined",
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    "python.languageServer": "Pylance",
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.banditEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.testing.pytestEnabled": true,
+    "python.envFile": "${workspaceFolder}/.envrc",
+    "isort.args": ["--atomic"],
+    "python.analysis.extraPaths": ["crypto_commando"],
+    "python.terminal.activateEnvironment": true,
+    "python.poetryPath": "poetry",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "cSpell.ignoreWords": ["pdbpp", "pycodestyle", "pylint", "pytest", "CMDO"],
+    "beautify.language": {
+        "js": {
+            "type": ["json"]
+        },
+        "css": ["css"]
+    }
 }
